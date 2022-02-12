@@ -19,8 +19,9 @@
     "express": "^4.17.2"
   },
   "devDependencies": {
-    "@babel/node": "^7.16.8",
-    "@babel/preset-env": "^7.16.11",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
     "nodemon": "^2.0.15"
   }
 }
