@@ -1,11 +1,13 @@
 import express from "express";
+import homeController from "../controller/HomeController"
 
 let router = express.Router()
 
+
 let initWebRoutes = app => {
-    router.get("/",(req, res) => {
-        return res.send('Heeeeee')
-    })
+    router.get("/",homeController.getHomePage)
+    router.post('/webhook', homeController.postWebhook);
+    router.get('/webhook', homeController.getWebhook)
 
     return app.use('/', router)
 }
