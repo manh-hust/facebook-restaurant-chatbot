@@ -10,7 +10,7 @@
   "keywords": [
     "chatbot"
   ],
-  "author": "manh",
+  "author": "do-duc-manh",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.1",
