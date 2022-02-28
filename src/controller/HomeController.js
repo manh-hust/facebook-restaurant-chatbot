@@ -18,12 +18,6 @@ let postWebhook = (req, res) => {
       let webhook_event = entry.messaging[0];
       console.log(webhook_event);
 
-      // Get the sender PSID
-      let sender_psid = webhook_event.sender.id;
-      console.log('Sender PSID: ' + sender_psid); // Gets the body of the webhook event
-      let webhook_event = entry.messaging[0];
-      console.log(webhook_event);
-
 
       // Get the sender PSID
       let sender_psid = webhook_event.sender.id;
@@ -36,7 +30,6 @@ let postWebhook = (req, res) => {
       } else if (webhook_event.postback) {
         handlePostback(sender_psid, webhook_event.postback);
       }
-
     });
 
     // Returns a '200 OK' response to all requests
