@@ -164,25 +164,29 @@ function callSendAPI(sender_psid, response) {
 let setupProfile = (req, res) => {
   // Construct the message body
   let request_body = {
-    "get_started": "GET_STARTED",
-    "whitelisted_domains": "https://restaurant-chatbot-app-manh.herokuapp.com/"
+    "get_started": {
+      "payload": "GET_STARTED"
+    },
+    "whitelisted_domains": ["https://restaurant-chatbot-app-manh.herokuapp.com/"]
   }
 
   // Send the HTTP request to the Messenger Platform
   request({
-    "uri": `https://graph.facebook.com/v13.0/me/messenger_profile?access_token=${PAGE_ACCESS_TOKEN}`,
+    "uri": `https://graph.facebook.com/v9.0/me/messenger_profile?access_token=${PAGE_ACCESS_TOKEN}`,
     "qs": {
       "access_token": PAGE_ACCESS_TOKEN
     },
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
+    console.log(body)
     if (!err) {
       console.log('Setup profile success!')
     } else {
       console.error("Unable to setup profile:" + err);
     }
   });
+  res.send('OK!')
 }
 
 module.exports = {
