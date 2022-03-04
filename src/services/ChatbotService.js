@@ -3,6 +3,7 @@ import request from 'request'
 require('dotenv').config();
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
+const linkImage = 'https://www.schiavello.com/__data/assets/image/0014/8105/carousel-atlantic-restaurant-crown-dining-partition.jpg'
 
 let callSendAPI = (sender_psid, response) => {
     // Construct the message body
@@ -56,15 +57,52 @@ let handleGetStarted = (sender_psid) => {
         try {
             let userName = await getUserName(sender_psid)
             console.log(userName)
-            let response = {
+            let response1 = {
                 "text": `OK! Chào mừng ${userName} đến với nhà hàng của chúng tôi.`
             }
-            await callSendAPI(sender_psid, response)
+            let response2 = sendGetStartedTemplate()
+            await callSendAPI(sender_psid, response1)
+            await callSendAPI(sender_psid, response2)
+
+
             resolve('done')
         } catch (e) {
             reject(e)
         }
     })
+}
+
+let sendGetStartedTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Xin chào bạn đến với nhà hàng của chúng tôi",
+                    "subtitle": "Dưới đây là các dịch vụ của nhà hàng.",
+                    "image_url": linkImage,
+                    "buttons": [{
+                            "type": "postback",
+                            "title": "MENU CHÍNH",
+                            "payload": "MAIN_MENU",
+                        },
+                        {
+                            "type": "postback",
+                            "title": "ĐẶT BÀN",
+                            "payload": "RESERVE_TABLE",
+                        },
+                        {
+                            "type": "postback",
+                            "title": "HƯỚNG DẪN SỬ DỤNG",
+                            "payload": "GUIDE",
+                        }
+                    ],
+                }]
+            }
+        }
+    }
+    return response
 }
 
 module.exports = {
