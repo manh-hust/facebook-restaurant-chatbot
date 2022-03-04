@@ -40,9 +40,9 @@ let getUserName = async (sender_psid) => {
         },
         "method": "GET",
     }, (err, res, body) => {
-        console.log('Body la: ' + body)
+        console.log('Body: ' + body)
         if (!err) {
-            let response = JSON.parse(res);
+            let response = JSON.parse(body);
             userName = `${response.first_name} ${response.last_name}`
             console.log('message sent!')
         } else {
