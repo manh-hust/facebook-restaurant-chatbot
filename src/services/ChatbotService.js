@@ -40,7 +40,7 @@ let getUserName = (sender_psid) => {
             console.log('Body: ' + body)
             if (!err) {
                 body = JSON.parse(body);
-                let userName = `${response.last_name} ${response.first_name}`
+                let userName = `${body.last_name} ${body.first_name}`
                 console.log('message sent!')
                 resolve(userName)
             } else {
