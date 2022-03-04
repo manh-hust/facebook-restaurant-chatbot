@@ -58,13 +58,11 @@ let handleGetStarted = (sender_psid) => {
             let userName = await getUserName(sender_psid)
             console.log(userName)
             let response1 = {
-                "text": `OK! Chào mừng ${userName} đến với nhà hàng của chúng tôi.`
+                "text": `Chào mừng ${userName} đến với nhà hàng của chúng tôi.`
             }
             let response2 = sendGetStartedTemplate()
-            await callSendAPI(sender_psid, response1)
-            await callSendAPI(sender_psid, response2)
-
-
+            callSendAPI(sender_psid, response1)
+            callSendAPI(sender_psid, response2)
             resolve('done')
         } catch (e) {
             reject(e)
@@ -79,7 +77,7 @@ let sendGetStartedTemplate = () => {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "Xin chào bạn đến với nhà hàng của chúng tôi",
+                    "title": "Nhà nhà Pikalazada kính chào quý khách.",
                     "subtitle": "Dưới đây là các dịch vụ của nhà hàng.",
                     "image_url": linkImage,
                     "buttons": [{
