@@ -30,32 +30,32 @@ let callSendAPI = (sender_psid, response) => {
     });
 }
 
-let getUserName = async (sender_psid) => {
+let getUserName = (sender_psid) => {
     // Send the HTTP request to the Messenger Platform
-    let userName = ''
-    await request({
-        "uri": `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${PAGE_ACCESS_TOKEN}`,
-        "qs": {
-            "access_token": PAGE_ACCESS_TOKEN
-        },
-        "method": "GET",
-    }, (err, res, body) => {
-        console.log('Body: ' + body)
-        if (!err) {
-            let response = JSON.parse(body);
-            userName = `${response.first_name} ${response.last_name}`
-            console.log('message sent!')
-        } else {
-            console.error("Unable to send message:" + err);
-        }
-    });
-    return userName
+    return new Promise((resolve, reject) => {
+        request({
+            "uri": `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${PAGE_ACCESS_TOKEN}`,
+            "method": "GET",
+        }, (err, res, body) => {
+            console.log('Body: ' + body)
+            if (!err) {
+                body = JSON.parse(body);
+                let userName = `${response.first_name} ${response.last_name}`
+                console.log('message sent!')
+                resolve(userName)
+            } else {
+                console.error("Unable to send message:" + err);
+                reject(err)
+            }
+        });
+    })
 }
 
 let handleGetStarted = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
             let userName = await getUserName(sender_psid)
+            console.log(userName)
             let response = {
                 "text": `OK! Chào mừng ${userName} đến với nhà hàng của chúng tôi.`
             }
