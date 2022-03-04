@@ -132,7 +132,7 @@ async function handlePostback(sender_psid, received_postback) {
       }
       break;
     case 'GET_STARTED':
-      await chatborService.handleGetStarted()
+      await chatborService.handleGetStarted(sender_psid)
 
       break;
     default:
