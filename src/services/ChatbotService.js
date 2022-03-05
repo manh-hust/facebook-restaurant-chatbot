@@ -96,7 +96,6 @@ let handleMainMenu = (sender_psid) => {
 let handleLunchMenu = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
-
             let response2 = getLunchMenuTemplate()
             // Send generic template message
             callSendAPI(sender_psid, response2)
@@ -111,7 +110,6 @@ let handleLunchMenu = (sender_psid) => {
 let handleDinnerMenu = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
-
             let response2 = getDinnerMenuTemplate()
             // Send generic template message
             callSendAPI(sender_psid, response2)
@@ -235,11 +233,20 @@ let getLunchMenuTemplate = () => {
                     {
                         "title": "Nem cuốn",
                         "subtitle": "",
-                        "image_url": 'https://cdn.pastaxi-manager.onepas.vn/content/uploads/articles/nguyenhuong/nemcuon/cach-lam-mon-nem-cuon-ngon-1.jpg',
+                        "image_url": 'https://img-global.cpcdn.com/recipes/813de2eb5288e8f8/1200x630cq70/photo.jpg',
                         "buttons": [{
                             "type": "postback",
                             "title": "XEM CHI TIẾT",
                             "payload": "VIEW_NEM_CUON",
+                        }],
+                    },
+                    {
+                        "title": "Hết gòi ...",
+                        "subtitle": "",
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "TRỞ LẠI MENU",
+                            "payload": "MAIN_MENU",
                         }],
                     },
                 ]
@@ -255,41 +262,64 @@ let getDinnerMenuTemplate = () => {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                        "title": "Menu của nhà hàng",
-                        "subtitle": "Chúng tôi hân hạnh mang đến cho bạn thực đơn phong phú của bữa trưa và bữa tối.",
-                        "image_url": IMAGE_MAIN_MENU_1,
-                        "buttons": [{
-                                "type": "postback",
-                                "title": "Bữa trưa",
-                                "payload": "LUNCH_MENU",
-                            },
-                            {
-                                "type": "postback",
-                                "title": "Bữa tối",
-                                "payload": "DINNER_MENU",
-                            }
-                        ],
-                    },
-                    {
-                        "title": "Giờ mở cửa",
-                        "subtitle": "T2 -> T6 : 10AM - 10PM || T7 + CN : 8AM - 11PM",
-                        "image_url": IMAGE_MAIN_MENU_2,
+                        "title": "Cơm sườn nướng",
+                        "subtitle": "",
+                        "image_url": 'https://img-global.cpcdn.com/recipes/630a5b24ef3fdf90/1200x630cq70/photo.jpg',
                         "buttons": [{
                             "type": "postback",
-                            "title": "ĐẶT BÀN",
-                            "payload": "RESERVE_TABLE",
-                        }, ],
+                            "title": "XEM CHI TIẾT",
+                            "payload": "VIEW_KHAI_VI",
+                        }],
                     },
                     {
-                        "title": "Không gian nhà hàng",
-                        "subtitle": "Nhà hàng có sức chứa lên đến 300 khách và phục vụ các bữa tiệc lớn.",
-                        "image_url": IMAGE_MAIN_MENU_3,
+                        "title": "Tôm hùm bơ tỏi",
+                        "subtitle": "",
+                        "image_url": 'https://ngonaz.com/wp-content/uploads/2021/05/cach-lam-tom-hum-sot-bo-toi-1.jpg',
                         "buttons": [{
                             "type": "postback",
-                            "title": "CHI TIẾT",
-                            "payload": "SHOW_ROOMS",
-                        }, ],
-                    }
+                            "title": "XEM CHI TIẾT",
+                            "payload": "VIEW_BUN_CHA",
+                        }],
+                    },
+                    {
+                        "title": "Bò bít tết",
+                        "subtitle": "",
+                        "image_url": 'http://media.vietq.vn/files/thuc-pham-phong-benh-148.jpg',
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "XEM CHI TIẾT",
+                            "payload": "VIEW_NEM_CUON",
+                        }],
+                    },
+                    {
+                        "title": "Bò Wellington",
+                        "subtitle": "",
+                        "image_url": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5s1Yfe2VeekQxqLcRSmobOEdV5o6qEnZXbw&usqp=CAU',
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "XEM CHI TIẾT",
+                            "payload": "VIEW_NEM_CUON",
+                        }],
+                    },
+                    {
+                        "title": "Cua hoàng đế sốt phô mai",
+                        "subtitle": "",
+                        "image_url": 'https://haisantrungnam.vn/wp-content/uploads/2020/04/cach-lam-cua-hoang-de-sot-pho-mai-1.jpg',
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "XEM CHI TIẾT",
+                            "payload": "VIEW_NEM_CUON",
+                        }],
+                    },
+                    {
+                        "title": "Hết gòi ...",
+                        "subtitle": "",
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "TRỞ LẠI MENU",
+                            "payload": "MAIN_MENU",
+                        }],
+                    },
                 ]
             }
         }

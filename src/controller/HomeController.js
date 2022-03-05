@@ -147,7 +147,7 @@ async function handlePostback(sender_psid, received_postback) {
       await chatborService.handleLunchMenu(sender_psid)
       break;
 
-    case 'LUNCH_MENU':
+    case 'DINNER_MENU':
       await chatborService.handleDinnerMenu(sender_psid)
       break;
 
