@@ -137,13 +137,10 @@ async function handlePostback(sender_psid, received_postback) {
     case 'RESTART_BOT':
     case 'GET_STARTED':
       await chatborService.handleGetStarted(sender_psid)
-<<<<<<< HEAD
       break;
 
     case 'MAIN_MENU':
       await chatborService.handleMainMenu(sender_psid)
-=======
->>>>>>> 7b0c5f53f7264036ee7c6066fad3ff177b5113be
       break;
 
     default:
@@ -230,11 +227,7 @@ let setupPersistent = async (req, res) => {
         },
         {
           "type": "postback",
-<<<<<<< HEAD
           "title": "Bắt đầu lại...",
-=======
-          "title": "Bắt đầu lại ?",
->>>>>>> 7b0c5f53f7264036ee7c6066fad3ff177b5113be
           "payload": "RESTART_BOT"
         }
       ]
