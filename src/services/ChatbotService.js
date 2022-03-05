@@ -3,11 +3,15 @@ import request from 'request'
 require('dotenv').config();
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
+<<<<<<< HEAD
 const IMAGE_GET_STARTED = 'https://www.schiavello.com/__data/assets/image/0014/8105/carousel-atlantic-restaurant-crown-dining-partition.jpg'
 const IMAGE_MAIN_MENU_1 = 'https://media-cdn.tripadvisor.com/media/photo-s/17/75/3f/d1/restaurant-in-valkenswaard.jpghttps://media.gettyimages.com/photos/pan-fried-duck-picture-id1081422898?s=612x612'
 const IMAGE_MAIN_MENU_2 = 'https://gosvietnam.vn/wp-content/themes/gosvn/images/thietkephanmem/img-video-4.jpg'
 const IMAGE_MAIN_MENU_3 = 'https://media-cdn.tripadvisor.com/media/photo-s/17/75/3f/d1/restaurant-in-valkenswaard.jpg'
 
+=======
+const linkImage = 'https://www.schiavello.com/__data/assets/image/0014/8105/carousel-atlantic-restaurant-crown-dining-partition.jpg'
+>>>>>>> 7b0c5f53f7264036ee7c6066fad3ff177b5113be
 
 let callSendAPI = (sender_psid, response) => {
     // Construct the message body
@@ -64,6 +68,7 @@ let handleGetStarted = (sender_psid) => {
             let response1 = {
                 "text": `Chào mừng ${userName} đến với nhà hàng của chúng tôi.`
             }
+<<<<<<< HEAD
             let response2 = getStartedTemplate()
 
             // Send text message
@@ -86,6 +91,11 @@ let handleMainMenu = (sender_psid) => {
             // Send generic template message
             callSendAPI(sender_psid, response2)
 
+=======
+            let response2 = sendGetStartedTemplate()
+            callSendAPI(sender_psid, response1)
+            callSendAPI(sender_psid, response2)
+>>>>>>> 7b0c5f53f7264036ee7c6066fad3ff177b5113be
             resolve('done')
         } catch (e) {
             reject(e)
@@ -93,6 +103,7 @@ let handleMainMenu = (sender_psid) => {
     })
 }
 
+<<<<<<< HEAD
 let getMainMenuTemplate = () => {
     let response = {
         "attachment": {
@@ -143,6 +154,9 @@ let getMainMenuTemplate = () => {
 }
 
 let getStartedTemplate = () => {
+=======
+let sendGetStartedTemplate = () => {
+>>>>>>> 7b0c5f53f7264036ee7c6066fad3ff177b5113be
     let response = {
         "attachment": {
             "type": "template",
