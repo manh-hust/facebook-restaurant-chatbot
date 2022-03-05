@@ -1,4 +1,3 @@
-import e from 'express';
 import request from 'request'
 require('dotenv').config();
 
@@ -56,6 +55,7 @@ let getUserName = (sender_psid) => {
     })
 }
 
+// Handle Send
 let handleGetStarted = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -93,6 +93,37 @@ let handleMainMenu = (sender_psid) => {
     })
 }
 
+let handleLunchMenu = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            let response2 = getLunchMenuTemplate()
+            // Send generic template message
+            callSendAPI(sender_psid, response2)
+
+            resolve('done')
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+let handleDinnerMenu = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            let response2 = getDinnerMenuTemplate()
+            // Send generic template message
+            callSendAPI(sender_psid, response2)
+
+            resolve('done')
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+// Data response
 let getMainMenuTemplate = () => {
     let response = {
         "attachment": {
@@ -175,7 +206,99 @@ let getStartedTemplate = () => {
     return response
 }
 
+let getLunchMenuTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                        "title": "Món khai vị",
+                        "subtitle": "",
+                        "image_url": 'https://monngonmoingay.com/wp-content/uploads/2019/09/s%C3%BAp-ph%E1%BB%93ng-t%C3%B4m-h%E1%BA%A3i-s%E1%BA%A3n.jpg',
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "XEM CHI TIẾT",
+                            "payload": "VIEW_KHAI_VI",
+                        }],
+                    },
+                    {
+                        "title": "Bún chả",
+                        "subtitle": "",
+                        "image_url": 'https://monngonbamien.org/wp-content/uploads/2019/10/cach-lam-bun-cha-ha-noi-tai-nha-ngon-nhat.jpg',
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "XEM CHI TIẾT",
+                            "payload": "VIEW_BUN_CHA",
+                        }],
+                    },
+                    {
+                        "title": "Nem cuốn",
+                        "subtitle": "",
+                        "image_url": 'https://cdn.pastaxi-manager.onepas.vn/content/uploads/articles/nguyenhuong/nemcuon/cach-lam-mon-nem-cuon-ngon-1.jpg',
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "XEM CHI TIẾT",
+                            "payload": "VIEW_NEM_CUON",
+                        }],
+                    },
+                ]
+            }
+        }
+    }
+    return response
+}
+let getDinnerMenuTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                        "title": "Menu của nhà hàng",
+                        "subtitle": "Chúng tôi hân hạnh mang đến cho bạn thực đơn phong phú của bữa trưa và bữa tối.",
+                        "image_url": IMAGE_MAIN_MENU_1,
+                        "buttons": [{
+                                "type": "postback",
+                                "title": "Bữa trưa",
+                                "payload": "LUNCH_MENU",
+                            },
+                            {
+                                "type": "postback",
+                                "title": "Bữa tối",
+                                "payload": "DINNER_MENU",
+                            }
+                        ],
+                    },
+                    {
+                        "title": "Giờ mở cửa",
+                        "subtitle": "T2 -> T6 : 10AM - 10PM || T7 + CN : 8AM - 11PM",
+                        "image_url": IMAGE_MAIN_MENU_2,
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "ĐẶT BÀN",
+                            "payload": "RESERVE_TABLE",
+                        }, ],
+                    },
+                    {
+                        "title": "Không gian nhà hàng",
+                        "subtitle": "Nhà hàng có sức chứa lên đến 300 khách và phục vụ các bữa tiệc lớn.",
+                        "image_url": IMAGE_MAIN_MENU_3,
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "CHI TIẾT",
+                            "payload": "SHOW_ROOMS",
+                        }, ],
+                    }
+                ]
+            }
+        }
+    }
+    return response
+}
 module.exports = {
     handleGetStarted: handleGetStarted,
-    handleMainMenu: handleMainMenu
+    handleMainMenu: handleMainMenu,
+    handleLunchMenu: handleLunchMenu,
+    handleDinnerMenu: handleDinnerMenu,
 }
