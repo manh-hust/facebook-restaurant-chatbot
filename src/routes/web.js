@@ -6,7 +6,11 @@ let router = express.Router()
 
 let initWebRoutes = app => {
     router.get("/", homeController.getHomePage)
+    //set up Get Started Button, whitelisted domain
     router.post("/setup-profile", homeController.setupProfile)
+    // set up Persistent Menu
+    router.post("/setup-persistent-menu", homeController.setupPersistent)
+
     router.post('/webhook', homeController.postWebhook);
     router.get('/webhook', homeController.getWebhook)
 

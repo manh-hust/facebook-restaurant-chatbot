@@ -1,4 +1,6 @@
 require('dotenv').config();
+import req from 'express/lib/request';
+import res from 'express/lib/response';
 import request from 'request'
 import chatborService from "../services/ChatbotService"
 
@@ -72,7 +74,6 @@ let getWebhook = (req, res) => {
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
   let response;
-
   // Checks if the message contains text
   if (received_message.text) {
     // Create the payload for a basic text message, which
@@ -126,15 +127,25 @@ async function handlePostback(sender_psid, received_postback) {
         "text": "Thanks!"
       }
       break;
+
     case 'no':
       response = {
         "text": "Oops, try sending another image."
       }
       break;
+
+    case 'RESTART_BOT':
     case 'GET_STARTED':
       await chatborService.handleGetStarted(sender_psid)
-
+<<<<<<< HEAD
       break;
+
+    case 'MAIN_MENU':
+      await chatborService.handleMainMenu(sender_psid)
+=======
+>>>>>>> 7b0c5f53f7264036ee7c6066fad3ff177b5113be
+      break;
+
     default:
       response = {
         "text": `Opp! I don't know response with postback ${payload}!`
@@ -198,10 +209,61 @@ let setupProfile = async (req, res) => {
   });
   return res.send('<h2>Setup profile success!</h2>')
 }
+// 
+let setupPersistent = async (req, res) => {
+  // Construct the message body
+  let request_body = {
+    "persistent_menu": [{
+      "locale": "default",
+      "composer_input_disabled": false,
+      "call_to_actions": [{
+          "type": "web_url",
+          "title": "GitHub",
+          "url": "https://github.com/ongimkshp",
+          "webview_height_ratio": "full"
+        },
+        {
+          "type": "web_url",
+          "title": "Facebook",
+          "url": "https://www.facebook.com/profile.php?id=100012640711946",
+          "webview_height_ratio": "full"
+        },
+        {
+          "type": "postback",
+<<<<<<< HEAD
+          "title": "Bắt đầu lại...",
+=======
+          "title": "Bắt đầu lại ?",
+>>>>>>> 7b0c5f53f7264036ee7c6066fad3ff177b5113be
+          "payload": "RESTART_BOT"
+        }
+      ]
+    }]
+  }
+
+  // Send the HTTP request to the Messenger Platform
+  await request({
+    "uri": `https://graph.facebook.com/v9.0/me/messenger_profile?access_token=${PAGE_ACCESS_TOKEN}`,
+    "qs": {
+      "access_token": PAGE_ACCESS_TOKEN
+    },
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    console.log(body)
+    if (!err) {
+      console.log('Setup persistent menu success!')
+    } else {
+      console.error("Unable to setup persistent menu:" + err);
+    }
+  });
+  return res.send('<h2>Setup persistent menu success!</h2>')
+}
 
 module.exports = {
   getHomePage: getHomePage,
   postWebhook: postWebhook,
   getWebhook: getWebhook,
-  setupProfile: setupProfile
+  setupProfile: setupProfile,
+  setupPersistent: setupPersistent
 }
