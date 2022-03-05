@@ -151,7 +151,7 @@ let getStartedTemplate = () => {
                 "elements": [{
                     "title": "Nhà hàng Pikalazada kính chào quý khách.",
                     "subtitle": "Dưới đây là các dịch vụ của nhà hàng.",
-                    "image_url": linkImage,
+                    "image_url": IMAGE_GET_STARTED,
                     "buttons": [{
                             "type": "postback",
                             "title": "MENU CHÍNH",
