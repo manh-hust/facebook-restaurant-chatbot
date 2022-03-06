@@ -190,6 +190,19 @@ let handleViewDetail = (sender_psid) => {
     })
 }
 
+let handleShowRooms = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response2 = getShowRoomsTemplate()
+            // Send generic template message
+            callSendAPI(sender_psid, response2)
+
+            resolve('done')
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 
 // Data response
 let getMainMenuTemplate = () => {
@@ -432,10 +445,53 @@ let getViewDetailTemplate = () => {
     return response
 }
 
+let getShowRoomsTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Phòng ngoài trời",
+                    "subtitle": "Nằm trên tầng 2 với không gian thoáng mát, view buổi tối cực đẹp",
+                    "image_url": 'https://drhueclinic.vn/images/seoworld/nha-hang-co-khong-gian-dep-tphcm.png',
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "CHI TIẾT",
+                        "payload": "DETAIL_ROOM",
+                    }],
+                }, {
+                    "title": "Không gian trang trọng",
+                    "subtitle": "Rất phù hợp với các buổi tiệc lớn, quan trọng và rất sang trọng",
+                    "image_url": 'https://chupanhmonan.com/wp-content/uploads/2019/03/ma%CC%82%CC%83u-thie%CC%82%CC%81t-ke%CC%82%CC%81-nha%CC%80-ha%CC%80ng-%C4%91e%CC%A3p.jpg',
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "CHI TIẾT",
+                        "payload": "DETAIL_ROOM",
+                    }],
+                }, {
+                    "title": "Phòng riêng",
+                    "subtitle": "Có một bàn ăn lớn với sức chứa dưới 10 người, đảm bảo không gian thân mật, yên tĩnh",
+                    "image_url": 'https://noithatkendesign.vn/storage/app/media/uploaded-files/thiet-ke-nha-hang-tan-co-dien-sua-trang-01.jpg',
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "CHI TIẾT",
+                        "payload": "DETAIL_ROOM",
+                    }],
+                }],
+
+            }
+        }
+    }
+    return response
+}
+
+
 module.exports = {
     handleGetStarted: handleGetStarted,
     handleMainMenu: handleMainMenu,
     handleLunchMenu: handleLunchMenu,
     handleDinnerMenu: handleDinnerMenu,
-    handleViewDetail: handleViewDetail
+    handleViewDetail: handleViewDetail,
+    handleShowRooms: handleShowRooms
 }
