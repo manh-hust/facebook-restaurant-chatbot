@@ -8,7 +8,7 @@ const IMAGE_MAIN_MENU_2 = 'https://gosvietnam.vn/wp-content/themes/gosvn/images/
 const IMAGE_MAIN_MENU_3 = 'https://media-cdn.tripadvisor.com/media/photo-s/17/75/3f/d1/restaurant-in-valkenswaard.jpg'
 
 
-let callSendAPI = (sender_psid, response) => {
+let callSendAPI = async (sender_psid, response) => {
     // Construct the message body
     let request_body = {
         "recipient": {
@@ -16,6 +16,9 @@ let callSendAPI = (sender_psid, response) => {
         },
         "message": response
     }
+
+    await sendMarkSeen(sender_psid)
+    await sendTypingOn(sender_psid)
 
     // Send the HTTP request to the Messenger Platform
     request({
@@ -30,6 +33,58 @@ let callSendAPI = (sender_psid, response) => {
             console.log('message sent!')
         } else {
             console.error("Unable to send message:" + err);
+        }
+    });
+}
+
+let sendTypingOn = (sender_psid) => {
+    // Construct the message body
+    let request_body = {
+        "recipient": {
+            "id": sender_psid
+        },
+        "sender_action": "typing_on"
+    }
+
+    // Send the HTTP request to the Messenger Platform
+    request({
+        "uri": "https://graph.facebook.com/v9.0/me/messages",
+        "qs": {
+            "access_token": PAGE_ACCESS_TOKEN
+        },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+            console.log('SendTypingOn sent!')
+        } else {
+            console.error("Unable to send SendTypingOn:" + err);
+        }
+    });
+}
+
+let sendMarkSeen = (sender_psid) => {
+    // Construct the message body
+    let request_body = {
+        "recipient": {
+            "id": sender_psid
+        },
+        "sender_action": "mark_seen"
+    }
+
+    // Send the HTTP request to the Messenger Platform
+    request({
+        "uri": "https://graph.facebook.com/v9.0/me/messages",
+        "qs": {
+            "access_token": PAGE_ACCESS_TOKEN
+        },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+            console.log('SendTypingOn sent!')
+        } else {
+            console.error("Unable to send SendTypingOn:" + err);
         }
     });
 }
@@ -351,7 +406,6 @@ let getDinnerMenuTemplate = () => {
     }
     return response
 }
-
 let getViewDetailTemplate = () => {
     let response = {
         "attachment": {
