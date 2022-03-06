@@ -134,12 +134,12 @@ let getMainMenuTemplate = () => {
                         "image_url": IMAGE_MAIN_MENU_1,
                         "buttons": [{
                                 "type": "postback",
-                                "title": "Bữa trưa",
+                                "title": "BỮA TRƯA",
                                 "payload": "LUNCH_MENU",
                             },
                             {
                                 "type": "postback",
-                                "title": "Bữa tối",
+                                "title": "BỮA TỐI",
                                 "payload": "DINNER_MENU",
                             }
                         ],
@@ -241,12 +241,16 @@ let getLunchMenuTemplate = () => {
                         }],
                     },
                     {
-                        "title": "Hết gòi ...",
+                        "title": "Trở lại",
                         "subtitle": "",
                         "buttons": [{
                             "type": "postback",
                             "title": "TRỞ LẠI MENU",
                             "payload": "MAIN_MENU",
+                        }, {
+                            "type": "postback",
+                            "title": "BỮA TỐI",
+                            "payload": "DINNER_MENU",
                         }],
                     },
                 ]
@@ -312,12 +316,16 @@ let getDinnerMenuTemplate = () => {
                         }],
                     },
                     {
-                        "title": "Hết gòi ...",
+                        "title": "Trở lại",
                         "subtitle": "",
                         "buttons": [{
                             "type": "postback",
                             "title": "TRỞ LẠI MENU",
                             "payload": "MAIN_MENU",
+                        }, {
+                            "type": "postback",
+                            "title": "BỮA TRƯA",
+                            "payload": "LUNCH_MENU",
                         }],
                     },
                 ]
