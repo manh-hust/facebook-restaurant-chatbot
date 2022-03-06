@@ -121,6 +121,21 @@ let handleDinnerMenu = (sender_psid) => {
     })
 }
 
+let handleViewDetail = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response2 = getViewDetailTemplate()
+            // Send generic template message
+            callSendAPI(sender_psid, response2)
+
+            resolve('done')
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+
 // Data response
 let getMainMenuTemplate = () => {
     let response = {
@@ -217,7 +232,7 @@ let getLunchMenuTemplate = () => {
                         "buttons": [{
                             "type": "postback",
                             "title": "XEM CHI TIẾT",
-                            "payload": "VIEW_KHAI_VI",
+                            "payload": "VIEW_DETAIL",
                         }],
                     },
                     {
@@ -227,7 +242,7 @@ let getLunchMenuTemplate = () => {
                         "buttons": [{
                             "type": "postback",
                             "title": "XEM CHI TIẾT",
-                            "payload": "VIEW_BUN_CHA",
+                            "payload": "VIEW_DETAIL",
                         }],
                     },
                     {
@@ -237,7 +252,7 @@ let getLunchMenuTemplate = () => {
                         "buttons": [{
                             "type": "postback",
                             "title": "XEM CHI TIẾT",
-                            "payload": "VIEW_NEM_CUON",
+                            "payload": "VIEW_DETAIL",
                         }],
                     },
                     {
@@ -273,7 +288,7 @@ let getDinnerMenuTemplate = () => {
                         "buttons": [{
                             "type": "postback",
                             "title": "XEM CHI TIẾT",
-                            "payload": "VIEW_KHAI_VI",
+                            "payload": "VIEW_DETAIL",
                         }],
                     },
                     {
@@ -283,7 +298,7 @@ let getDinnerMenuTemplate = () => {
                         "buttons": [{
                             "type": "postback",
                             "title": "XEM CHI TIẾT",
-                            "payload": "VIEW_BUN_CHA",
+                            "payload": "VIEW_DETAIL",
                         }],
                     },
                     {
@@ -293,7 +308,7 @@ let getDinnerMenuTemplate = () => {
                         "buttons": [{
                             "type": "postback",
                             "title": "XEM CHI TIẾT",
-                            "payload": "VIEW_NEM_CUON",
+                            "payload": "VIEW_DETAIL",
                         }],
                     },
                     {
@@ -303,7 +318,7 @@ let getDinnerMenuTemplate = () => {
                         "buttons": [{
                             "type": "postback",
                             "title": "XEM CHI TIẾT",
-                            "payload": "VIEW_NEM_CUON",
+                            "payload": "VIEW_DETAIL",
                         }],
                     },
                     {
@@ -313,7 +328,7 @@ let getDinnerMenuTemplate = () => {
                         "buttons": [{
                             "type": "postback",
                             "title": "XEM CHI TIẾT",
-                            "payload": "VIEW_NEM_CUON",
+                            "payload": "VIEW_DETAIL",
                         }],
                     },
                     {
@@ -336,9 +351,45 @@ let getDinnerMenuTemplate = () => {
     }
     return response
 }
+
+let getViewDetailTemplate = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Cơm sườn nướng",
+                    "subtitle": "Giá 50.000đ - 100.000đ",
+                    "image_url": 'https://img-global.cpcdn.com/recipes/630a5b24ef3fdf90/1200x630cq70/photo.jpg',
+                }, {
+                    "title": "Trở lại",
+                    "image_url": 'https://leerit.com/media/blog/uploads/2015/04/08/tu-vung-tieng-anh-ve-nha-hang.jpeg',
+                    "subtitle": "",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "TRỞ LẠI MENU",
+                        "payload": "MAIN_MENU",
+                    }, {
+                        "type": "postback",
+                        "title": "BỮA TRƯA",
+                        "payload": "LUNCH_MENU",
+                    }, {
+                        "type": "postback",
+                        "title": "BỮA TỐI",
+                        "payload": "DINNER_MENU",
+                    }],
+                }, ]
+            }
+        }
+    }
+    return response
+}
+
 module.exports = {
     handleGetStarted: handleGetStarted,
     handleMainMenu: handleMainMenu,
     handleLunchMenu: handleLunchMenu,
     handleDinnerMenu: handleDinnerMenu,
+    handleViewDetail: handleViewDetail
 }
