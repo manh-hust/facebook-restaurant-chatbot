@@ -370,14 +370,6 @@ let getViewDetailTemplate = () => {
                         "type": "postback",
                         "title": "TRỞ LẠI MENU",
                         "payload": "MAIN_MENU",
-                    }, {
-                        "type": "postback",
-                        "title": "BỮA TRƯA",
-                        "payload": "LUNCH_MENU",
-                    }, {
-                        "type": "postback",
-                        "title": "BỮA TỐI",
-                        "payload": "DINNER_MENU",
                     }],
                 }, ]
             }
