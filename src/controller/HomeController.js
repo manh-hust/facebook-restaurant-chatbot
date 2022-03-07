@@ -159,10 +159,6 @@ async function handlePostback(sender_psid, received_postback) {
       await chatborService.handleShowRooms(sender_psid)
       break;
 
-    case 'MAIN_MENU':
-      await chatborService.handleMainMenu(sender_psid)
-      break;
-
     default:
       response = {
         "text": `Opp! I don't know response with postback ${payload}!`

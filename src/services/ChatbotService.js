@@ -257,7 +257,7 @@ let getMainMenuTemplate = () => {
     return response
 }
 
-let sendGetStartedTemplate = () => {
+let getStartedTemplate = () => {
     let response = {
         "attachment": {
             "type": "template",
