@@ -2,10 +2,22 @@ import request from 'request'
 require('dotenv').config();
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
+<<<<<<< HEAD
 const IMAGE_GET_STARTED = 'https://www.schiavello.com/__data/assets/image/0014/8105/carousel-atlantic-restaurant-crown-dining-partition.jpg'
 const IMAGE_MAIN_MENU_1 = 'https://media-cdn.tripadvisor.com/media/photo-s/1a/ee/95/9d/marmaris-grills-and-signatures.jpg'
 const IMAGE_MAIN_MENU_2 = 'https://gosvietnam.vn/wp-content/themes/gosvn/images/thietkephanmem/img-video-4.jpg'
 const IMAGE_MAIN_MENU_3 = 'https://media-cdn.tripadvisor.com/media/photo-s/17/75/3f/d1/restaurant-in-valkenswaard.jpg'
+=======
+<<<<<<< HEAD
+const IMAGE_GET_STARTED = 'https://www.schiavello.com/__data/assets/image/0014/8105/carousel-atlantic-restaurant-crown-dining-partition.jpg'
+const IMAGE_MAIN_MENU_1 = 'https://media-cdn.tripadvisor.com/media/photo-s/17/75/3f/d1/restaurant-in-valkenswaard.jpghttps://media.gettyimages.com/photos/pan-fried-duck-picture-id1081422898?s=612x612'
+const IMAGE_MAIN_MENU_2 = 'https://gosvietnam.vn/wp-content/themes/gosvn/images/thietkephanmem/img-video-4.jpg'
+const IMAGE_MAIN_MENU_3 = 'https://media-cdn.tripadvisor.com/media/photo-s/17/75/3f/d1/restaurant-in-valkenswaard.jpg'
+
+=======
+const linkImage = 'https://www.schiavello.com/__data/assets/image/0014/8105/carousel-atlantic-restaurant-crown-dining-partition.jpg'
+>>>>>>> 7b0c5f53f7264036ee7c6066fad3ff177b5113be
+>>>>>>> 9f0438ddcf7a3140741a7f9a1047c820a295a94e
 
 
 let callSendAPI = async (sender_psid, response) => {
@@ -119,6 +131,12 @@ let handleGetStarted = (sender_psid) => {
             let response1 = {
                 "text": `Chào mừng ${userName} đến với nhà hàng của chúng tôi.`
             }
+<<<<<<< HEAD
+            let response2 = getStartedTemplate()
+
+            // Send text message
+=======
+<<<<<<< HEAD
             let response2 = getStartedTemplate()
 
             // Send text message
@@ -133,6 +151,33 @@ let handleGetStarted = (sender_psid) => {
     })
 }
 
+let handleMainMenu = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            let response2 = getMainMenuTemplate()
+            // Send generic template message
+            callSendAPI(sender_psid, response2)
+
+=======
+            let response2 = sendGetStartedTemplate()
+>>>>>>> 9f0438ddcf7a3140741a7f9a1047c820a295a94e
+            callSendAPI(sender_psid, response1)
+            // Send generic template message
+            callSendAPI(sender_psid, response2)
+<<<<<<< HEAD
+
+=======
+>>>>>>> 7b0c5f53f7264036ee7c6066fad3ff177b5113be
+>>>>>>> 9f0438ddcf7a3140741a7f9a1047c820a295a94e
+            resolve('done')
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+<<<<<<< HEAD
 let handleMainMenu = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -205,6 +250,9 @@ let handleShowRooms = (sender_psid) => {
 }
 
 // Data response
+=======
+<<<<<<< HEAD
+>>>>>>> 9f0438ddcf7a3140741a7f9a1047c820a295a94e
 let getMainMenuTemplate = () => {
     let response = {
         "attachment": {
@@ -217,12 +265,20 @@ let getMainMenuTemplate = () => {
                         "image_url": IMAGE_MAIN_MENU_1,
                         "buttons": [{
                                 "type": "postback",
+<<<<<<< HEAD
                                 "title": "BỮA TRƯA",
+=======
+                                "title": "Bữa trưa",
+>>>>>>> 9f0438ddcf7a3140741a7f9a1047c820a295a94e
                                 "payload": "LUNCH_MENU",
                             },
                             {
                                 "type": "postback",
+<<<<<<< HEAD
                                 "title": "BỮA TỐI",
+=======
+                                "title": "Bữa tối",
+>>>>>>> 9f0438ddcf7a3140741a7f9a1047c820a295a94e
                                 "payload": "DINNER_MENU",
                             }
                         ],
@@ -255,6 +311,12 @@ let getMainMenuTemplate = () => {
 }
 
 let getStartedTemplate = () => {
+<<<<<<< HEAD
+=======
+=======
+let sendGetStartedTemplate = () => {
+>>>>>>> 7b0c5f53f7264036ee7c6066fad3ff177b5113be
+>>>>>>> 9f0438ddcf7a3140741a7f9a1047c820a295a94e
     let response = {
         "attachment": {
             "type": "template",
@@ -498,9 +560,13 @@ let getShowRoomsTemplate = () => {
 
 module.exports = {
     handleGetStarted: handleGetStarted,
+<<<<<<< HEAD
     handleMainMenu: handleMainMenu,
     handleLunchMenu: handleLunchMenu,
     handleDinnerMenu: handleDinnerMenu,
     handleViewDetail: handleViewDetail,
     handleShowRooms: handleShowRooms
+=======
+    handleMainMenu: handleMainMenu
+>>>>>>> 9f0438ddcf7a3140741a7f9a1047c820a295a94e
 }
