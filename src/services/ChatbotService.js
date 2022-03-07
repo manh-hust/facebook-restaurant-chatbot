@@ -238,7 +238,7 @@ let getMainMenuTemplate = () => {
                             "type": "web_url",
                             "url": `${process.env.URL_WEB_VIEW_ORDER}`,
                             "title": "ĐẶT BÀN",
-                            "web_view_height_raito": "tall",
+                            "webview_height_ratio ": "tall",
                             "messenger_extensions": true
                         }],
                     },
@@ -278,7 +278,7 @@ let getStartedTemplate = () => {
                             "type": "web_url",
                             "url": `${process.env.URL_WEB_VIEW_ORDER}`,
                             "title": "ĐẶT BÀN",
-                            "web_view_height_raito": "tall",
+                            "webview_height_ratio ": "tall",
                             "messenger_extensions": true
                         },
                         {
@@ -497,7 +497,7 @@ let getShowRoomsTemplate = () => {
                         "type": "web_url",
                         "url": `${process.env.URL_WEB_VIEW_ORDER}`,
                         "title": "ĐẶT BÀN",
-                        "web_view_height_raito": "tall",
+                        "webview_height_ratio ": "tall",
                         "messenger_extensions": true
                     }],
                 }],
