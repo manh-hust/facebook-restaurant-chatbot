@@ -1,6 +1,4 @@
 require('dotenv').config();
-import req from 'express/lib/request';
-import res from 'express/lib/response';
 import request from 'request'
 import chatborService from "../services/ChatbotService"
 
@@ -8,6 +6,10 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN
 
 let getHomePage = (req, res) => {
   return res.render('homepage.ejs')
+}
+
+let getReserveTable = (req, res) => {
+  return res.render('reserve-table.ejs')
 }
 
 let postWebhook = (req, res) => {
@@ -259,7 +261,6 @@ let setupPersistent = async (req, res) => {
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
-    console.log(body)
     if (!err) {
       console.log('Setup persistent menu success!')
     } else {
@@ -271,6 +272,7 @@ let setupPersistent = async (req, res) => {
 
 module.exports = {
   getHomePage: getHomePage,
+  getReserveTable: getReserveTable,
   postWebhook: postWebhook,
   getWebhook: getWebhook,
   setupProfile: setupProfile,

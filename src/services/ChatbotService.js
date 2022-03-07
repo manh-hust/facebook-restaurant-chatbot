@@ -489,6 +489,12 @@ let getShowRoomsTemplate = () => {
                         "type": "postback",
                         "title": "TRỞ LẠI MENU",
                         "payload": "MAIN_MENU",
+                    }, {
+                        "type": "web_url",
+                        "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                        "title": "ĐẶT BÀN",
+                        "web_view_height_raito": "tall",
+                        "messenger_extensions": true
                     }],
                 }],
 
