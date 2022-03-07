@@ -478,6 +478,15 @@ let getShowRoomsTemplate = () => {
                         "title": "CHI TIẾT",
                         "payload": "DETAIL_ROOM",
                     }],
+                }, {
+                    "title": "Trở lại",
+                    "image_url": 'https://leerit.com/media/blog/uploads/2015/04/08/tu-vung-tieng-anh-ve-nha-hang.jpeg',
+                    "subtitle": "",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "TRỞ LẠI MENU",
+                        "payload": "MAIN_MENU",
+                    }],
                 }],
 
             }
