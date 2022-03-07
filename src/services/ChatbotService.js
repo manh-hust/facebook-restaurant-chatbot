@@ -235,10 +235,12 @@ let getMainMenuTemplate = () => {
                         "subtitle": "T2 -> T6 : 10AM - 10PM || T7 + CN : 8AM - 11PM",
                         "image_url": IMAGE_MAIN_MENU_2,
                         "buttons": [{
-                            "type": "postback",
+                            "type": "web_url",
+                            "url": `${process.env.URL_WEB_VIEW_ORDER}`,
                             "title": "ĐẶT BÀN",
-                            "payload": "RESERVE_TABLE",
-                        }, ],
+                            "web_view_height_raito": "tall",
+                            "messenger_extensions": true
+                        }],
                     },
                     {
                         "title": "Không gian nhà hàng",
@@ -273,9 +275,11 @@ let getStartedTemplate = () => {
                             "payload": "MAIN_MENU",
                         },
                         {
-                            "type": "postback",
+                            "type": "web_url",
+                            "url": `${process.env.URL_WEB_VIEW_ORDER}`,
                             "title": "ĐẶT BÀN",
-                            "payload": "RESERVE_TABLE",
+                            "web_view_height_raito": "tall",
+                            "messenger_extensions": true
                         },
                         {
                             "type": "postback",
