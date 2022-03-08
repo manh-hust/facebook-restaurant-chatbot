@@ -239,7 +239,7 @@ let getMainMenuTemplate = () => {
                             "type": "web_url",
                             "url": `${process.env.URL_WEB_VIEW_ORDER}`,
                             "title": "ĐẶT BÀN",
-                            "webview_height_ratio ": "tall",
+                            "webview_height_ratio": "tall",
                             "messenger_extensions": true
                         }],
                     },
@@ -498,7 +498,7 @@ let getShowRoomsTemplate = () => {
                         "type": "web_url",
                         "url": `${process.env.URL_WEB_VIEW_ORDER}`,
                         "title": "ĐẶT BÀN",
-                        "webview_height_ratio ": "tall",
+                        "webview_height_ratio": "tall",
                         "messenger_extensions": true
                     }],
                 }],
