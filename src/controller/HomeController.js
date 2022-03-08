@@ -12,8 +12,32 @@ let getReserveTable = (req, res) => {
   return res.render('reserve-table.ejs')
 }
 
-let postReserveTable = (req, res) => {
-  res.send(req.body)
+let postReserveTable = async (req, res) => {
+
+  try {
+    let customerName = ""
+    if (req.body.customerName === "") {
+      customerName = "Empty"
+    } else {
+      customerName = req.body.customerName
+    }
+
+    let response1 = {
+      "text": `--- Info about your lookup order---
+      \nTên khách hàng: ${customerName}
+      \nEmail: ${req.body.email}
+      \nSố điện thoại: ${req.body.phoneNumber}
+      `
+    }
+
+    await chatborService.callSendAPI(req.body.psid, response1)
+    return res.status(200).json({
+      message: "OK"
+    })
+
+  } catch (error) {
+
+  }
 }
 
 let postWebhook = (req, res) => {
