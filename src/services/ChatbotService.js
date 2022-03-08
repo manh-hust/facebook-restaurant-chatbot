@@ -124,9 +124,10 @@ let handleGetStarted = (sender_psid) => {
 
             // Send text message
             callSendAPI(sender_psid, response1)
+            console.log('Send text')
             // Send generic template message
             callSendAPI(sender_psid, response2)
-
+            console.log('Send Tempalte')
             resolve('done')
         } catch (e) {
             reject(e)
@@ -269,24 +270,24 @@ let getStartedTemplate = () => {
                     "title": "Nhà hàng Pikalazada kính chào quý khách.",
                     "subtitle": "Dưới đây là các dịch vụ của nhà hàng.",
                     "image_url": IMAGE_GET_STARTED,
-                    "buttons": [{
-                            "type": "postback",
-                            "title": "MENU CHÍNH",
-                            "payload": "MAIN_MENU",
-                        },
-                        {
-                            "type": "web_url",
-                            "url": `${process.env.URL_WEB_VIEW_ORDER}`,
-                            "title": "ĐẶT BÀN",
-                            "webview_height_ratio ": "tall",
-                            "messenger_extensions": true
-                        },
-                        {
-                            "type": "postback",
-                            "title": "HƯỚNG DẪN SỬ DỤNG",
-                            "payload": "GUIDE",
-                        }
-                    ],
+                    // "buttons": [{
+                    //         "type": "postback",
+                    //         "title": "MENU CHÍNH",
+                    //         "payload": "MAIN_MENU",
+                    //     },
+                    //     {
+                    //         "type": "web_url",
+                    //         "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                    //         "title": "ĐẶT BÀN",
+                    //         "webview_height_ratio ": "tall",
+                    //         "messenger_extensions": true
+                    //     },
+                    //     {
+                    //         "type": "postback",
+                    //         "title": "HƯỚNG DẪN SỬ DỤNG",
+                    //         "payload": "GUIDE",
+                    //     }
+                    // ],
                 }]
             }
         }

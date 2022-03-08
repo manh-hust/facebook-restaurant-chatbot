@@ -215,7 +215,6 @@ let setupProfile = async (req, res) => {
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
-    console.log(body)
     if (!err) {
       console.log('Setup profile success!')
     } else {
