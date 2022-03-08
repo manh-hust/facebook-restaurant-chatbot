@@ -12,6 +12,10 @@ let getReserveTable = (req, res) => {
   return res.render('reserve-table.ejs')
 }
 
+let postReserveTable = (req, res) => {
+  res.send(req.body)
+}
+
 let postWebhook = (req, res) => {
   let body = req.body;
   console.log(body)
@@ -272,6 +276,7 @@ let setupPersistent = async (req, res) => {
 module.exports = {
   getHomePage: getHomePage,
   getReserveTable: getReserveTable,
+  postReserveTable: postReserveTable,
   postWebhook: postWebhook,
   getWebhook: getWebhook,
   setupProfile: setupProfile,

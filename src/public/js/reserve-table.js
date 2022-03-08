@@ -9,10 +9,11 @@
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'Messenger'));
 
+
 window.extAsyncInit = function () {
     // the Messenger Extensions JS SDK is done loading 
 
-    MessengerExtensions.getContext('753933095237424',
+    MessengerExtensions.getContext('296056379260324',
         function success(thread_context) {
             // success
             //set psid to input
@@ -21,7 +22,7 @@ window.extAsyncInit = function () {
         },
         function error(err) {
             // error
-            console.log('Lỗi đặt bàn Eric bot', err);
+            console.log('Lỗi đặt bàn BIM bot', err);
         }
     );
 };

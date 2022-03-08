@@ -15,7 +15,7 @@ let initWebRoutes = app => {
     router.get('/webhook', homeController.getWebhook)
 
     router.get('/reserve-table', homeController.getReserveTable)
-
+    router.post('/reserve-table-ajax', homeController.postReserveTable)
 
     return app.use('/', router)
 }
