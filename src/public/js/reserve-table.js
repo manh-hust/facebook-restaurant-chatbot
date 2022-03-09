@@ -1,5 +1,3 @@
-console.log(123)
-
 (function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) {
@@ -11,10 +9,8 @@ console.log(123)
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'Messenger'));
 
-
 window.extAsyncInit = function () {
     // the Messenger Extensions JS SDK is done loading 
-
     MessengerExtensions.getContext('296056379260324',
         function success(thread_context) {
             // success
@@ -24,7 +20,7 @@ window.extAsyncInit = function () {
         },
         function error(err) {
             // error
-            console.log('Lỗi đặt bàn BIM bot', err);
+            console.log('Lỗi đặt bàn Eric bot', err);
         }
     );
 };

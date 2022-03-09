@@ -120,7 +120,7 @@ let handleGetStarted = (sender_psid) => {
             }
             // Send text message
 
-            let response2 = getStartedTemplate()
+            let response2 = getStartedTemplate(sender_psid)
 
             // Send text message
             callSendAPI(sender_psid, response1)
@@ -140,7 +140,7 @@ let handleMainMenu = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
 
-            let response2 = getMainMenuTemplate()
+            let response2 = getMainMenuTemplate(sender_psid)
             // Send generic template message
             callSendAPI(sender_psid, response2)
 
@@ -196,7 +196,7 @@ let handleViewDetail = (sender_psid) => {
 let handleShowRooms = (sender_psid) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let response2 = getShowRoomsTemplate()
+            let response2 = getShowRoomsTemplate(sender_psid)
             // Send generic template message
             callSendAPI(sender_psid, response2)
 
@@ -209,7 +209,7 @@ let handleShowRooms = (sender_psid) => {
 
 // Data response
 
-let getMainMenuTemplate = () => {
+let getMainMenuTemplate = (sender_psid) => {
     let response = {
         "attachment": {
             "type": "template",
@@ -237,7 +237,7 @@ let getMainMenuTemplate = () => {
                         "image_url": IMAGE_MAIN_MENU_2,
                         "buttons": [{
                             "type": "web_url",
-                            "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                            "url": `${process.env.URL_WEB_VIEW_ORDER}?senderID=${sender_psid}`,
                             "title": "ĐẶT BÀN",
                             "webview_height_ratio": "tall",
                             "messenger_extensions": true
@@ -260,7 +260,7 @@ let getMainMenuTemplate = () => {
     return response
 }
 
-let getStartedTemplate = () => {
+let getStartedTemplate = (sender_psid) => {
     let response = {
         "attachment": {
             "type": "template",
@@ -277,7 +277,7 @@ let getStartedTemplate = () => {
                         },
                         {
                             "type": "web_url",
-                            "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                            "url": `${process.env.URL_WEB_VIEW_ORDER}?senderID=${sender_psid}`,
                             "title": "ĐẶT BÀN",
                             "webview_height_ratio": "tall",
                             "messenger_extensions": true
@@ -453,7 +453,7 @@ let getViewDetailTemplate = () => {
     return response
 }
 
-let getShowRoomsTemplate = () => {
+let getShowRoomsTemplate = (sender_psid) => {
     let response = {
         "attachment": {
             "type": "template",
@@ -496,7 +496,7 @@ let getShowRoomsTemplate = () => {
                         "payload": "MAIN_MENU",
                     }, {
                         "type": "web_url",
-                        "url": `${process.env.URL_WEB_VIEW_ORDER}`,
+                        "url": `${process.env.URL_WEB_VIEW_ORDER}?senderID=${sender_psid}`,
                         "title": "ĐẶT BÀN",
                         "webview_height_ratio": "tall",
                         "messenger_extensions": true
