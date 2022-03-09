@@ -9,7 +9,11 @@ let getHomePage = (req, res) => {
 }
 
 let getReserveTable = (req, res) => {
-  return res.render('reserve-table.ejs')
+  let senderID = req.params.senderID
+  console.log("SenderID: " + senderID)
+  return res.render('reserve-table.ejs', {
+    senderID: senderID
+  })
 }
 
 let postReserveTable = async (req, res) => {
