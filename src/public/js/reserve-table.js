@@ -67,6 +67,7 @@ function handleClickButtonReserveTable() {
             //close webview
             MessengerExtensions.requestCloseBrowser(function success() {
                 // webview closed
+                window.close()
             }, function error(err) {
                 // an error occurred
                 console.log(err);
