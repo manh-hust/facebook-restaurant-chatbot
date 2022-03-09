@@ -237,7 +237,7 @@ let getMainMenuTemplate = (sender_psid) => {
                         "image_url": IMAGE_MAIN_MENU_2,
                         "buttons": [{
                             "type": "web_url",
-                            "url": `${process.env.URL_WEB_VIEW_ORDER}?senderID=${sender_psid}`,
+                            "url": `${process.env.URL_WEB_VIEW_ORDER}/${sender_psid}`,
                             "title": "ĐẶT BÀN",
                             "webview_height_ratio": "tall",
                             "messenger_extensions": true
@@ -277,7 +277,7 @@ let getStartedTemplate = (sender_psid) => {
                         },
                         {
                             "type": "web_url",
-                            "url": `${process.env.URL_WEB_VIEW_ORDER}?senderID=${sender_psid}`,
+                            "url": `${process.env.URL_WEB_VIEW_ORDER}/${sender_psid}`,
                             "title": "ĐẶT BÀN",
                             "webview_height_ratio": "tall",
                             "messenger_extensions": true
@@ -496,7 +496,7 @@ let getShowRoomsTemplate = (sender_psid) => {
                         "payload": "MAIN_MENU",
                     }, {
                         "type": "web_url",
-                        "url": `${process.env.URL_WEB_VIEW_ORDER}?senderID=${sender_psid}`,
+                        "url": `${process.env.URL_WEB_VIEW_ORDER}/${sender_psid}`,
                         "title": "ĐẶT BÀN",
                         "webview_height_ratio": "tall",
                         "messenger_extensions": true
