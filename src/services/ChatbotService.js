@@ -517,5 +517,6 @@ module.exports = {
     handleDinnerMenu: handleDinnerMenu,
     handleViewDetail: handleViewDetail,
     handleShowRooms: handleShowRooms,
-    callSendAPI: callSendAPI
+    callSendAPI: callSendAPI,
+    getUserName: getUserName
 }
