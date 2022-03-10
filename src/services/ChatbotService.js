@@ -6,7 +6,7 @@ const IMAGE_GET_STARTED = 'https://www.schiavello.com/__data/assets/image/0014/8
 const IMAGE_MAIN_MENU_1 = 'https://media-cdn.tripadvisor.com/media/photo-s/1a/ee/95/9d/marmaris-grills-and-signatures.jpg'
 const IMAGE_MAIN_MENU_2 = 'https://gosvietnam.vn/wp-content/themes/gosvn/images/thietkephanmem/img-video-4.jpg'
 const IMAGE_MAIN_MENU_3 = 'https://media-cdn.tripadvisor.com/media/photo-s/17/75/3f/d1/restaurant-in-valkenswaard.jpg'
-const IMAGE_GIF_WELCOME = 'https://media4.giphy.com/media/gcXcSRYZ9cGWY/giphy.gif?cid=ecf05e47aqc4yifgowrxqq3mlra78e8yqfhlygpo5oewzg8k&rid=giphy.gif'
+const IMAGE_GIF_WELCOME = 'https://media3.giphy.com/media/KztT2c4u8mYYUiMKdJ/giphy.gif?cid=ecf05e47q9mjkqttkw5zwzxrrm6o7c1jlw5jssvxedkvcz2d&rid=giphy.gif'
 
 let callSendAPI = async (sender_psid, response) => {
     return new Promise(async (resolve, reject) => {
@@ -127,9 +127,9 @@ let handleGetStarted = (sender_psid) => {
 
             // let response2 = getStartedTemplate(sender_psid)
 
-            let response2 = getImageGetStartedTempalte(sender_psid)
+            let response2 = getImageGetStartedTempalte()
 
-            let response3 = getStartedQuickReplyTemplate(sender_psid)
+            let response3 = getStartedQuickReplyTemplate()
             // Send text message
             callSendAPI(sender_psid, response1)
             callSendAPI(sender_psid, response2)
