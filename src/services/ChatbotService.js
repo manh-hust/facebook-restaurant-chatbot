@@ -6,7 +6,7 @@ const IMAGE_GET_STARTED = 'https://www.schiavello.com/__data/assets/image/0014/8
 const IMAGE_MAIN_MENU_1 = 'https://media-cdn.tripadvisor.com/media/photo-s/1a/ee/95/9d/marmaris-grills-and-signatures.jpg'
 const IMAGE_MAIN_MENU_2 = 'https://gosvietnam.vn/wp-content/themes/gosvn/images/thietkephanmem/img-video-4.jpg'
 const IMAGE_MAIN_MENU_3 = 'https://media-cdn.tripadvisor.com/media/photo-s/17/75/3f/d1/restaurant-in-valkenswaard.jpg'
-
+const IMAGE_GIF_WELCOME = 'https://media4.giphy.com/media/gcXcSRYZ9cGWY/giphy.gif?cid=ecf05e47aqc4yifgowrxqq3mlra78e8yqfhlygpo5oewzg8k&rid=giphy.gif&ct=g'
 
 let callSendAPI = async (sender_psid, response) => {
     // Construct the message body
@@ -96,7 +96,6 @@ let getUserName = (sender_psid) => {
             "uri": `https://graph.facebook.com/${sender_psid}?fields=first_name,last_name,profile_pic&access_token=${PAGE_ACCESS_TOKEN}`,
             "method": "GET",
         }, (err, res, body) => {
-            console.log('Body: ' + body)
             if (!err) {
                 body = JSON.parse(body);
                 let userName = `${body.last_name} ${body.first_name}`
@@ -120,13 +119,16 @@ let handleGetStarted = (sender_psid) => {
             }
             // Send text message
 
-            let response2 = getStartedTemplate(sender_psid)
+            // let response2 = getStartedTemplate(sender_psid)
 
+            let response2 = getImageGetStartedTempalte(sender_psid)
+
+            let response3 = getStartedQuickReplyTemplate(sender_psid)
             // Send text message
             callSendAPI(sender_psid, response1)
-            console.log('Send text')
-            // Send generic template message
             callSendAPI(sender_psid, response2)
+            callSendAPI(sender_psid, response3)
+
             console.log('Send Tempalte')
             resolve('done')
         } catch (e) {
@@ -289,6 +291,40 @@ let getStartedTemplate = (sender_psid) => {
                         }
                     ],
                 }]
+            }
+        }
+    }
+    return response
+}
+
+let getStartedQuickReplyTemplate = () => {
+    let response = {
+        "text": "Dưới đây là các lựa chọn của nhà hàng:",
+        "quick_replies": [{
+            "content_type": "text",
+            "title": "MENU CHÍNH",
+            "payload": "MAIN_MENU",
+        }, {
+            "content_type": "text",
+            "title": "ĐẶT BÀN",
+            "payload": "<POSTBACK_PAYLOAD>",
+        }, {
+            "content_type": "text",
+            "title": "HƯỚNG DẪN SỬ DỤNG BOT",
+            "payload": "GUIDE",
+        }]
+    }
+
+    return response
+}
+
+let getImageGetStartedTempalte = () => {
+    let response = {
+        "attachment": {
+            "type": "image",
+            "payload": {
+                "url": IMAGE_GIF_WELCOME,
+                "is_reusable": true
             }
         }
     }

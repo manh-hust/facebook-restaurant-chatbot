@@ -49,7 +49,6 @@ let getHomePage = (req, res) => {
 
 let getReserveTable = (req, res) => {
   let senderID = req.params.senderID
-  console.log("SenderID: " + senderID)
   return res.render('reserve-table.ejs', {
     senderID: senderID
   })
@@ -75,7 +74,10 @@ let postReserveTable = async (req, res) => {
     }
 
     let response1 = {
-      "text": `--Thông tin của bạn--/nTên khách hàng: ${customerName}./nEmail: ${req.body.email}./nSố điện thoại: ${req.body.phoneNumber}.`
+      "text": `--Thông tin của bạn--
+      Tên khách hàng: ${customerName}.
+      Email: ${req.body.email}.
+      Số điện thoại: ${req.body.phoneNumber}.`
     }
 
     await chatborService.callSendAPI(req.body.psid, response1)
