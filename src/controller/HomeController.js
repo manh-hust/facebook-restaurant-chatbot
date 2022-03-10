@@ -152,8 +152,18 @@ let getWebhook = (req, res) => {
 }
 
 // Handles messages events
-function handleMessage(sender_psid, received_message) {
+async function handleMessage(sender_psid, received_message) {
   let response;
+  if (received_message.quick_reply && received_message.quick_reply.payload) {
+    if (received_message.quick_reply.payload == "MAIN_MENU") {
+      await chatborService.handleMainMenu(sender_psid)
+    }
+    if (received_message.quick_reply.payload == "GUIDE") {
+      // await chatborService.handleMainMenu(sender_psid)
+    }
+
+    return;
+  }
   // Checks if the message contains text
   if (received_message.text) {
     // Create the payload for a basic text message, which
