@@ -131,9 +131,9 @@ let handleGetStarted = (sender_psid) => {
 
             let response3 = getStartedQuickReplyTemplate()
             // Send text message
-            callSendAPI(sender_psid, response1)
-            callSendAPI(sender_psid, response2)
-            callSendAPI(sender_psid, response3)
+            await callSendAPI(sender_psid, response1)
+            await callSendAPI(sender_psid, response2)
+            await callSendAPI(sender_psid, response3)
 
             console.log('Send Tempalte')
             resolve('done')
