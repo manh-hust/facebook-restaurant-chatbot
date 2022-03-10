@@ -6,35 +6,41 @@ const IMAGE_GET_STARTED = 'https://www.schiavello.com/__data/assets/image/0014/8
 const IMAGE_MAIN_MENU_1 = 'https://media-cdn.tripadvisor.com/media/photo-s/1a/ee/95/9d/marmaris-grills-and-signatures.jpg'
 const IMAGE_MAIN_MENU_2 = 'https://gosvietnam.vn/wp-content/themes/gosvn/images/thietkephanmem/img-video-4.jpg'
 const IMAGE_MAIN_MENU_3 = 'https://media-cdn.tripadvisor.com/media/photo-s/17/75/3f/d1/restaurant-in-valkenswaard.jpg'
-const IMAGE_GIF_WELCOME = 'https://media4.giphy.com/media/gcXcSRYZ9cGWY/giphy.gif?cid=ecf05e47aqc4yifgowrxqq3mlra78e8yqfhlygpo5oewzg8k&rid=giphy.gif&ct=g'
+const IMAGE_GIF_WELCOME = 'https://media4.giphy.com/media/gcXcSRYZ9cGWY/giphy.gif?cid=ecf05e47aqc4yifgowrxqq3mlra78e8yqfhlygpo5oewzg8k&rid=giphy.gif'
 
 let callSendAPI = async (sender_psid, response) => {
-    // Construct the message body
-    let request_body = {
-        "recipient": {
-            "id": sender_psid
-        },
-        "message": response
-    }
+    return new Promise(async (resolve, reject) => {
+        try {
+            // Construct the message body
+            let request_body = {
+                "recipient": {
+                    "id": sender_psid
+                },
+                "message": response
+            }
 
-    await sendMarkSeen(sender_psid)
-    await sendTypingOn(sender_psid)
+            await sendMarkSeen(sender_psid)
+            await sendTypingOn(sender_psid)
 
-    // Send the HTTP request to the Messenger Platform
-    request({
-        "uri": "https://graph.facebook.com/v2.6/me/messages",
-        "qs": {
-            "access_token": PAGE_ACCESS_TOKEN
-        },
-        "method": "POST",
-        "json": request_body
-    }, (err, res, body) => {
-        if (!err) {
-            console.log('message sent!')
-        } else {
-            console.error("Unable to send message:" + err);
+            // Send the HTTP request to the Messenger Platform
+            request({
+                "uri": "https://graph.facebook.com/v2.6/me/messages",
+                "qs": {
+                    "access_token": PAGE_ACCESS_TOKEN
+                },
+                "method": "POST",
+                "json": request_body
+            }, (err, res, body) => {
+                if (!err) {
+                    resolve('message sent!')
+                } else {
+                    console.error("Unable to send message:" + err);
+                }
+            });
+        } catch (error) {
+            reject(error)
         }
-    });
+    })
 }
 
 let sendTypingOn = (sender_psid) => {
