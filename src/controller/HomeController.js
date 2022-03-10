@@ -35,7 +35,7 @@ let writeDataToGGSheet = async (data) => {
   await sheet.addRow({
     "Tên FB": data.userName,
     "Email": data.email,
-    "Số điện thoại": data.phoneNumber,
+    "Số điện thoại": `'${data.phoneNumber}`,
     "Thời gian": formatedDate,
     "Tên khách hàng": data.customerName,
 
@@ -75,11 +75,7 @@ let postReserveTable = async (req, res) => {
     }
 
     let response1 = {
-      "text": `---Thông tin của bạn---
-      Tên khách hàng: ${customerName}.
-      Email: ${req.body.email}.
-      Số điện thoại: ${req.body.phoneNumber}.
-      `
+      "text": `--Thông tin của bạn--/nTên khách hàng: ${customerName}./nEmail: ${req.body.email}./nSố điện thoại: ${req.body.phoneNumber}.`
     }
 
     await chatborService.callSendAPI(req.body.psid, response1)
