@@ -31,6 +31,10 @@ let callSendAPI = async (sender_psid, response) => {
                 "method": "POST",
                 "json": request_body
             }, (err, res, body) => {
+                console.log("--------------------")
+                console.log(body)
+                console.log("--------------------")
+
                 if (!err) {
                     resolve('message sent!')
                 } else {
@@ -362,7 +366,6 @@ let getMediaTempalte = () => {
                 "elements": [{
                     "media_type": "video",
                     "url": "https://business.facebook.com/bunchaVCS/videos/1285072248657356/",
-                    // "attachment_id": "1285072248657356",
                     "buttons": [{
                         "type": "postback",
                         "title": "MENU CHÍNH",
