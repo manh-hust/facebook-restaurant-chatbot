@@ -375,7 +375,7 @@ let getMediaTempalte = () => {
             }
         }
     }
-    return
+    return response
 }
 
 let getLunchMenuTemplate = () => {
