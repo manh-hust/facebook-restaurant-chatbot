@@ -159,7 +159,7 @@ async function handleMessage(sender_psid, received_message) {
       await chatborService.handleMainMenu(sender_psid)
     }
     if (received_message.quick_reply.payload == "GUIDE") {
-      // await chatborService.handleMainMenu(sender_psid)
+      await chatborService.handleGuide(sender_psid)
     }
 
     return;
@@ -247,6 +247,10 @@ async function handlePostback(sender_psid, received_postback) {
 
     case 'SHOW_ROOMS':
       await chatborService.handleShowRooms(sender_psid)
+      break;
+
+    case 'GUIDE':
+      await chatborService.handleGuide(sender_psid)
       break;
 
     default:

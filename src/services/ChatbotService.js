@@ -215,6 +215,26 @@ let handleShowRooms = (sender_psid) => {
     })
 }
 
+let handleGuide = (sender_psid) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            // Send text message
+            let userName = await getUserName(sender_psid)
+            let response1 = {
+                "text": `Chào mừng bạn ${userName}, bạn vui lòng xem video để biết cách sử dụng bot ☺.`
+            }
+            // Send video message
+            let response2 = getMediaTempalte()
+
+            await callSendAPI(sender_psid, response1)
+            await callSendAPI(sender_psid, response2)
+
+            resolve('done')
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 // Data response
 
 let getMainMenuTemplate = (sender_psid) => {
@@ -312,10 +332,6 @@ let getStartedQuickReplyTemplate = () => {
             "payload": "MAIN_MENU",
         }, {
             "content_type": "text",
-            "title": "ĐẶT BÀN",
-            "payload": "<POSTBACK_PAYLOAD>",
-        }, {
-            "content_type": "text",
             "title": "HƯỚNG DẪN SỬ DỤNG BOT",
             "payload": "GUIDE",
         }]
@@ -335,6 +351,28 @@ let getImageGetStartedTempalte = () => {
         }
     }
     return response
+}
+
+let getMediaTempalte = () => {
+    let response = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "media",
+                "elements": [{
+                    "media_type": "video",
+                    "url": "https://business.facebook.com/bunchaVCS/videos/1285072248657356/",
+                    // "attachment_id": "1285072248657356",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "MENU CHÍNH",
+                        "payload": "MAIN_MENU",
+                    }]
+                }]
+            }
+        }
+    }
+    return
 }
 
 let getLunchMenuTemplate = () => {
@@ -559,6 +597,7 @@ module.exports = {
     handleDinnerMenu: handleDinnerMenu,
     handleViewDetail: handleViewDetail,
     handleShowRooms: handleShowRooms,
+    handleGuide: handleGuide,
     callSendAPI: callSendAPI,
     getUserName: getUserName
 }
